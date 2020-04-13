@@ -16,7 +16,7 @@ typedef struct Person pers_t;
 
 pers_t* create(char* name, unsigned int age) {
 	pers_t* result = (pers_t*) malloc(sizeof(pers_t));
-  result->name = strdup(name);
+	result->name = strdup(name);
 	result->age = age;
 	result->friends = (pers_t**) malloc(sizeof(pers_t*) * INITIAL_CAPACITY);
 	result->sizeAllocated = INITIAL_CAPACITY;
@@ -25,14 +25,14 @@ pers_t* create(char* name, unsigned int age) {
 
 void destroy(pers_t* pers){
 	free(pers->name);
-  free(pers);
+	free(pers);
 }
 
 void addFriend(pers_t* pers, pers_t* newFriend) {
 	//printf("DEBUG size: %d\n", pers->sizeAllocated);
 	//printf("DEBUG pointer: %p\n", *(pers->friends + pers->sizeAllocated - 1));
 	if (pers->sizeFriends == pers->sizeAllocated) {
-	  printf("Reallocating...\n");
+		printf("Reallocating...\n");
 		int newSize = pers->sizeAllocated * 2;
 		pers->friends =  realloc(pers->friends, newSize * sizeof(pers_t*));
 		if (pers->friends) {
@@ -70,7 +70,7 @@ void displayFriends(pers_t* pers) {
 
 int main(){
 	pers_t* agent = create("Agent Smith", 128);
-  printf("Added: ");
+	printf("Added: ");
 	displayPerson(agent);	
 	pers_t* sonny = create("Sonny Moore", 256);
 	printf("Added: ");
